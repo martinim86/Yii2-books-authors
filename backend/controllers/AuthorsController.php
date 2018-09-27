@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Authors;
-use app\models\AuthorsSearch;
+use backend\models\Authors;
+use backend\models\AuthorsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,11 +37,13 @@ class AuthorsController extends Controller
     {
         $searchModel = new AuthorsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $books = $searchModel::find()->with('books')->all();
+        $books = $searchModel::find()
+            ->joinWith('books')
+            ->all();
 		$books = count($books[0][books]);
-        //echo "<pre>";
-        //print_r ($books);
-        //echo "</pre>";
+//        echo "<pre>";
+//        print_r ($books);
+//        echo "</pre>";
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

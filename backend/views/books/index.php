@@ -30,8 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
             'attribute'=>'author_id',
             'label'=>'Автор',
-            'format'=>'text',
-            'value'=>'authors.surname',
+            'value'=>'authors.name',
 			],
 
             ['class' => 'yii\grid\ActionColumn'],

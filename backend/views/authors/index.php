@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label'=>'Книг',
                 'format'=>'text',
                 'value'=>function($data){
-					return $books;
-				},
+                    return  count($data[books]);
+                },
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
